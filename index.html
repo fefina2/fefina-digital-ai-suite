@@ -208,9 +208,17 @@ text:prompt
 }
 );
 
-const data=await response.json();
+const data = await response.json();
 
-const result=data.candidates[0].content.parts[0].text;
+console.log(data);
+
+if(!data.candidates){
+alert(JSON.stringify(data));
+return;
+}
+
+const result =
+data.candidates[0].content.parts[0].text;
 
 document.getElementById("titles").innerText=result;
 document.getElementById("hook").innerText=result;
