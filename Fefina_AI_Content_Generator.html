@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fefina AI Content Generator</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:20px}
+textarea,input,select{width:100%;padding:10px;margin:8px 0}
+button{padding:12px 20px;font-size:16px}
+.output{white-space:pre-wrap;border:1px solid #ccc;padding:12px;margin-top:15px}
+</style>
+</head>
+<body>
+<h1>Fefina AI Content Generator</h1>
+
+<label>Topik Konten</label>
+<input id="topic" placeholder="Contoh: Kenapa Lagu Bisa Nyangkut di Kepala?">
+
+<label>Jumlah Scene</label>
+<select id="sceneCount">
+<option>3</option>
+<option selected>5</option>
+<option>7</option>
+<option>10</option>
+</select>
+
+<button onclick="generate()">Generate Template</button>
+
+<div id="out" class="output"></div>
+
+<script>
+function generate(){
+ const topic=document.getElementById('topic').value||'[TOPIK]';
+ const scenes=parseInt(document.getElementById('sceneCount').value);
+
+ let txt="";
+ txt += "JUDUL VIRAL:\\n[Isi judul viral tentang "+topic+"]\\n\\n";
+ txt += "HOOK 0-3 DETIK:\\n[Hook brutal untuk membuat orang berhenti scroll]\\n\\n";
+ txt += "PROMPT THUMBNAIL:\\n[Prompt thumbnail viral tentang "+topic+"]\\n\\n";
+
+ for(let i=1;i<=scenes;i++){
+   txt += "SCENE "+i+"\\n";
+   txt += "- Narasi: [Narasi scene "+i+"]\\n";
+   txt += "- Prompt Gambar: [Prompt gambar scene "+i+"]\\n";
+   txt += "- Prompt Video: [Prompt video scene "+i+"]\\n\\n";
+ }
+
+ txt += "CAPTION:\\n[Caption viral]\\n\\n";
+ txt += "HASHTAG:\\n#viral #fyp #edukasi #faktaunik\\n";
+
+ document.getElementById('out').textContent=txt;
+}
+</script>
+</body>
+</html>
